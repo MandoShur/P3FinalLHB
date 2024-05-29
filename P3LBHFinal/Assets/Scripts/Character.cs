@@ -7,10 +7,10 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Camera playerCamera;
-    public float walkSpeed = 5f;
-    public float runSpeed = 12f;
-    public float jumpPower = 7f;
-    public float gravity = 10f;
+    public float walkSpeed = 20f;
+    public float runSpeed = 20f;
+    public float jumpPower = 9f;
+    public float gravity = 8f;
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
     public float defaultHeight = 2f;
