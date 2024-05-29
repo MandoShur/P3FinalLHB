@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private PlayerController playerController;
+    private int enemiesKilled = 0;
+    public UnityEngine.UI.Text enemiesKilledText;
 
     void Awake()
     {
-        // Ensure there is only one instance of the GameManager
+        // make sure only one instance of the GameManager
         if (Instance == null)
         {
             Instance = this;
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
         // Find the player controller in the scene
         playerController = FindObjectOfType<PlayerController>();
 
-        // Disable player movement at the start if we're in the title screen
+        // Disable player movement when at the title screen
         if (SceneManager.GetActiveScene().name == "TitleScreen")
         {
             SetPlayerMovement(false);
@@ -71,8 +73,7 @@ public class GameManager : MonoBehaviour
             playerController.SetCanMove(canMove);
         }
     }
-    private int enemiesKilled = 0;
-    public UnityEngine.UI.Text enemiesKilledText;  // Reference to UI Text to display the kill count
+    
 
 
     public void EnemyKilled()

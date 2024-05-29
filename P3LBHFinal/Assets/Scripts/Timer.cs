@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;  // Change this to TextMeshProUGUI
+    public TextMeshProUGUI timerText;
     private float elapsedTime = 0f;
     private bool isRunning = true;
 

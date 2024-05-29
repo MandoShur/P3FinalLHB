@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36713fdd6a4564f4f93fb295b090f9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 10
+  detectionRange: 50
   attackRange: 2
   attackCooldown: 1.5
   maxHealth: 100

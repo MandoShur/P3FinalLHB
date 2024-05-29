@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.AI;  // Ensure to include the NavMeshAgent namespace
+using UnityEngine.AI; 
 
 public class EnemyController : MonoBehaviour
 {
-    public float detectionRange = 10.0f; // Detection range for spotting the player
+    public float detectionRange = 100.0f; // Detection range for spotting the player
     public float attackRange = 2.0f; // Attack range for hitting the player
-    public float attackCooldown = 1.5f; // Cooldown time between attacks
-    public int maxHealth = 100; // Maximum health of the enemy
-    public int damage = 20; // Damage dealt to the player
-    public Transform[] patrolPoints; // Points to patrol between
+    public float attackCooldown = 1.5f; // Cooldown between attacks
+    public int maxHealth = 100; // Max health of the enemy
+    public int damage = 20; // Damage done to the player
+    public Transform[] patrolPoints; // Points to patrol
+    public int health = 100;
 
     private int currentHealth;
     private Transform player;
@@ -74,7 +75,7 @@ public class EnemyController : MonoBehaviour
             if (distanceToPlayer < attackRange && attackCooldownTimer <= 0f)
             {
                 AttackPlayer();
-                attackCooldownTimer = attackCooldown; // Reset the attack cooldown timer
+                attackCooldownTimer = attackCooldown;
             }
         }
         else
@@ -82,13 +83,13 @@ public class EnemyController : MonoBehaviour
             if (isChasing)
             {
                 // Stop chasing and return to patrolling
-                isChasing = false;
+                isChasing = true;
                 GoToNextPatrolPoint();
             }
         }
 
         // Patrol logic
-        if (!isChasing && agent.remainingDistance < 0.5f)
+        if (!isChasing && agent.remainingDistance < 1f)
         {
             GoToNextPatrolPoint();
         }
@@ -136,4 +137,5 @@ public class EnemyController : MonoBehaviour
         UnityEngine.Debug.Log("Enemy died!");
         Destroy(gameObject);
     }
+
 }

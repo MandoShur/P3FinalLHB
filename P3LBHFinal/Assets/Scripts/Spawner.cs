@@ -8,16 +8,16 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // The prefab of the enemy to spawn
+    public GameObject enemyPrefab; // The prefab of the enemy 
     public int numberOfEnemiesPerWave = 5; // Number of enemies to spawn per wave
-    public float timeBetweenWaves = 5f; // Time between each wave
-    public float timeBetweenEnemies = 1f; // Time between spawning each enemy within a wave
+    public float timeBetweenWaves = 15f; // Time between each wave
+    public float timeBetweenEnemies = 2f; // Time between spawning each enemy within a wave
 
     private int currentWave = 0; // Current wave number
 
     void Start()
     {
-        // Start spawning waves
+        
         StartCoroutine(SpawnWaves());
 
        
@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            // Increment wave number
+            
             currentWave++;
 
             UnityEngine.Debug.Log("Spawner started.");
