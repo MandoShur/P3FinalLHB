@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private PlayerController playerController;
-    private int enemiesKilled = 0;
     public UnityEngine.UI.Text enemiesKilledText;
 
     void Awake()
@@ -76,16 +75,6 @@ public class GameManager : MonoBehaviour
     
 
 
-    public void EnemyKilled()
-    {
-        enemiesKilled++;
-        UpdateUI();
-    }
-    void UpdateUI()
-    {
-        if (enemiesKilledText != null)
-        {
-            enemiesKilledText.text = "Enemies Killed: " + enemiesKilled;
-        }
-    }
+ 
+
 }

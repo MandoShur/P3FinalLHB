@@ -3,38 +3,48 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Slider slider;
+  
     public int maxHealth = 100;
     private int currentHealth;
-    public HealthBar healthBar; 
+    public TextMeshProUGUI healthText; //text component reference
+    public GameOverManager gameOverManager; // Reference to the GameOverManager
+
 
     public GameTimer gameTimer;
 
     void Start()
     {
+        UpdateHealthText();
         currentHealth = maxHealth;
-        if (slider != null)
+
+        if (healthText == null)
         {
-            slider.maxValue = maxHealth;
-            slider.value = maxHealth; // Set value to max
+            UnityEngine.Debug.LogError("HealthText reference is not set in the Inspector!");
+            return;
         }
-        else
-        {
-            UnityEngine.Debug.LogError("Slider reference is not assigned in PlayerHealth script!");
-        }
+
     }
 
     public void TakeDamage(int amount)
     {
     
         currentHealth -= amount;
-        healthBar.SetHealth(currentHealth);
+        // Clamp the current health to be within 0 and maxHealth
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // Update the health display
+        UpdateHealthText();
+        if (currentHealth <= 0)
+        { 
+            Die();
+        }
+
         if (currentHealth <= 0)
         {
-            Die();
+            gameOverManager.GameOver();
         }
     }
 
@@ -47,5 +57,31 @@ public class PlayerHealth : MonoBehaviour
 
         UnityEngine.Debug.Log("Player died!");
         // Add other death logic here (e.g., show game over screen)
+    }
+
+
+    void UpdateHealthText()
+    {
+        if (healthText != null)
+        {
+            healthText.text = "Health: " + currentHealth.ToString();
+        }
+
+        else
+        {
+            UnityEngine.Debug.LogError("HealthText reference is missing!");
+        }
+    }
+    
+    
+
+    public void Heal(int amount)
+    {
+        // Increase current health by amount healed
+        currentHealth += amount;
+        // Clamp the current health to be within 0 and maxHealth
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // Update the health display
+        UpdateHealthText();
     }
 }

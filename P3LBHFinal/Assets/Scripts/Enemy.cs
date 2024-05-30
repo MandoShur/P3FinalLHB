@@ -12,7 +12,8 @@ public class EnemyController : MonoBehaviour
     public int maxHealth = 100; // Max health of the enemy
     public int damage = 20; // Damage done to the player
     public Transform[] patrolPoints; // Points to patrol
-    public int health = 100;
+    public int health = 20;
+
 
     private int currentHealth;
     private Transform player;

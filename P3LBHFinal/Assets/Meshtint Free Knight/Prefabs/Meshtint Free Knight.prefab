@@ -180,9 +180,10 @@ GameObject:
   - component: {fileID: 6819375432408488964}
   - component: {fileID: -3326480771216144844}
   - component: {fileID: -7531250111075128232}
+  - component: {fileID: 5542577194361485023}
   m_Layer: 0
   m_Name: Meshtint Free Knight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +198,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0455818, y: 2.0749092, z: 2.295}
+  m_LocalScale: {x: 2.9558659, y: 3.1673489, z: 3.366765}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4475122965245958}
@@ -247,8 +248,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999999, y: 2.7758052, z: 1}
+  m_Center: {x: 0, y: 0.88790333, z: 0}
 --- !u!54 &6819375432408488964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -289,11 +290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 50
-  attackRange: 2
+  attackRange: 5
   attackCooldown: 1.5
-  maxHealth: 100
+  maxHealth: 20
   damage: 20
   patrolPoints: []
+  health: 20
 --- !u!195 &-7531250111075128232
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -316,6 +318,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5542577194361485023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022148595836406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735d9c64e381d024ab1949c7c6acb480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
 --- !u!1 &1087546517206048
 GameObject:
   m_ObjectHideFlags: 0

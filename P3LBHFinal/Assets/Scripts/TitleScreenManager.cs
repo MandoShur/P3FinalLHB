@@ -10,7 +10,7 @@ public class TitleScreenManager : MonoBehaviour
     public void StartGame()
     {
         // Load the main game scene
-        SceneManager.LoadScene("MainGameScene"); // Replace "MainGameScene" with the name of your game scene
+        SceneManager.LoadScene("Castle Crash");
     }
 
 
