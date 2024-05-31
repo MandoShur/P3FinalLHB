@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using static System.Net.Mime.MediaTypeNames;
 using UnityEngine.UI;
 using TMPro;
+using System.Diagnostics;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +15,16 @@ public class GameManager : MonoBehaviour
 
     private PlayerController playerController;
     public UnityEngine.UI.Text enemiesKilledText;
+    private PlayerMovement playerMovement;
+    public Canvas gameOverCanvas;
+    public Canvas gameOverScreen;
+    public Button restartButton; 
+    public Button quitButton;
+    public GameObject player;
+
+   
+
+
 
     void Awake()
     {
@@ -37,6 +50,49 @@ public class GameManager : MonoBehaviour
         {
             SetPlayerMovement(false);
         }
+
+      
+        if (player == null)
+        {
+            UnityEngine.Debug.LogError("Player is not assigned in the GameManager.");
+        }
+        else
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement == null)
+            {
+                UnityEngine.Debug.LogError("PlayerMovement component is not found on the player GameObject.");
+            }
+        }
+
+        if (gameOverCanvas == null)
+        {
+            UnityEngine.Debug.LogError("Game Over Canvas is not assigned in the GameManager.");
+        }
+        else
+        {
+            gameOverCanvas.gameObject.SetActive(false); // Ensure Game Over screen is inactive at the start
+        }
+
+        if (restartButton == null)
+        {
+            UnityEngine.Debug.LogError("Restart Button is not assigned in the GameManager.");
+        }
+        else
+        {
+            restartButton.onClick.AddListener(RestartGame);
+        }
+
+        if (quitButton == null)
+        {
+            UnityEngine.Debug.LogError("Quit Button is not assigned in the GameManager.");
+        }
+        else
+        {
+            quitButton.onClick.AddListener(QuitGame);
+        }
+
+
     }
 
     void OnEnable()
@@ -72,9 +128,42 @@ public class GameManager : MonoBehaviour
             playerController.SetCanMove(canMove);
         }
     }
-    
+
+    public void GameOver()
+    {
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.gameObject.SetActive(true); // Activate Game Over screen
+        }
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false; // Disable player movement
+        }
+    }
+
+    public void RestartGame()
+    {
+       
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 
- 
+
+     public void QuitGame()
+     {
+        // Quit the application
+        UnityEngine.Application.Quit();
+
+        // If we are running in the editor, stop playing
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+         #endif
+     }
+
+
+
+
+
 
 }

@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int attackDamage = 10; // Damage the player deals
+    public int attackDamage = 10; // amount of damage you do
     public float attackRange = 1.5f; // Range of the attack
     public LayerMask enemyLayer; // Layer for enemy detection
-    public Animator animator; // Reference to the animator
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // Check if "Fire1" is pressed
+        if (Input.GetButtonDown("Fire1")) // Check if fire1 is pressed
         {
             UnityEngine.Debug.Log("Attack button pressed");
             Attack();
@@ -21,13 +20,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        // Optionally trigger attack animation
-        if (animator != null)
-        {
-            animator.SetTrigger("Attack");
-        }
 
-        // Detect enemies in range of the attack
+        // Detect enemies in range of your attack
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
 
         if (hitEnemies.Length > 0)
@@ -50,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
-                UnityEngine.Debug.Log("Enemy does not have an EnemyHealth component: " + enemy.name);
+                UnityEngine.Debug.Log("Enemy does not have a EnemyHealth: " + enemy.name);
             }
         }
     }

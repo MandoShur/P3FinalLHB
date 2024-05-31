@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public TextMeshProUGUI healthText; //text component reference
     public GameOverManager gameOverManager; // Reference to the GameOverManager
+    public GameManager gameManager;
 
 
     public GameTimer gameTimer;
@@ -35,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         // Clamp the current health to be within 0 and maxHealth
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        // Update the health display
+        // Update the health 
         UpdateHealthText();
         if (currentHealth <= 0)
         { 
@@ -53,6 +54,15 @@ public class PlayerHealth : MonoBehaviour
         if (gameTimer != null)
         {
             gameTimer.StopTimer();
+        }
+
+        if (gameManager != null)
+        {
+            gameManager.GameOver(); // Call GameOver method from GameManager
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("GameManager reference not set on PlayerHealth script.");
         }
 
         UnityEngine.Debug.Log("Player died!");
