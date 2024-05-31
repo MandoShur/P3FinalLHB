@@ -133,18 +133,18 @@ public class GameManager : MonoBehaviour
     {
         if (gameOverScreen != null)
         {
-            gameOverScreen.gameObject.SetActive(true); // Activate Game Over screen
+            gameOverScreen.gameObject.SetActive(true); // Activates game over screen
         }
         if (playerMovement != null)
         {
-            playerMovement.enabled = false; // Disable player movement
+            playerMovement.enabled = false; // Disable movement
         }
     }
 
     public void RestartGame()
     {
        
-        // Reload the current scene
+        // Reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -152,10 +152,10 @@ public class GameManager : MonoBehaviour
 
      public void QuitGame()
      {
-        // Quit the application
+        // Quit the app
         UnityEngine.Application.Quit();
 
-        // If we are running in the editor, stop playing
+        // If its running in the editor stop playing
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
          #endif

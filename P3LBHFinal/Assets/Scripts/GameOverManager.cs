@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // If you're using TextMeshPro for UI text
+using TMPro; 
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject gameOverUI; // Reference to the game over UI
-    public TextMeshProUGUI gameOverText; // Reference to the game over text
+    public GameObject gameOverUI; 
+    public TextMeshProUGUI gameOverText; 
 
     private bool isGameOver = false;
 
-    // Call this method to trigger gameover
+    //trigger gameover
     public void GameOver()
     {
         if (isGameOver)
@@ -33,6 +33,7 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
+        //to quit the app
    
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();

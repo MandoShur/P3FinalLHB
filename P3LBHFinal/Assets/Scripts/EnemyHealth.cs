@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //if reaches 0 it will die
         currentHealth -= damage;
         UnityEngine.Debug.Log("Enemy took damage, current health: " + currentHealth);
 

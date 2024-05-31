@@ -6,12 +6,12 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float detectionRange = 100.0f; // Detection range for spotting the player
-    public float attackRange = 2.0f; // Attack range for hitting the player
-    public float attackCooldown = 1.5f; // Cooldown between attacks
-    public int maxHealth = 100; // Max health of the enemy
-    public int damage = 20; // Damage done to the player
-    public Transform[] patrolPoints; // Points to patrol
+    public float detectionRange = 100.0f; 
+    public float attackRange = 2.0f; 
+    public float attackCooldown = 1.5f; 
+    public int maxHealth = 100; 
+    public int damage = 20; 
+    public Transform[] patrolPoints; 
     public int health = 20;
 
 
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         {
             if (isChasing)
             {
-                // Stop chasing and return to patrolling
+                // Stop chasing and return to patrol
                 isChasing = true;
                 GoToNextPatrolPoint();
             }
@@ -134,7 +134,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        // Implement death logic here (e.g., play animation, drop loot)
+        // death logic
         UnityEngine.Debug.Log("Enemy died!");
         Destroy(gameObject);
     }

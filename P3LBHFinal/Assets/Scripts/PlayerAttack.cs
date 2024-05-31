@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int attackDamage = 10; // amount of damage you do
-    public float attackRange = 1.5f; // Range of the attack
-    public LayerMask enemyLayer; // Layer for enemy detection
+    public int attackDamage = 10; 
+    public float attackRange = 1.5f; 
+    public LayerMask enemyLayer; 
 
     void Update()
     {

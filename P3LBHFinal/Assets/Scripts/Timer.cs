@@ -20,6 +20,7 @@ public class GameTimer : MonoBehaviour
 
     void UpdateTimerText()
     {
+        //calculates the time
         int minutes = Mathf.FloorToInt(elapsedTime / 60F);
         int seconds = Mathf.FloorToInt(elapsedTime - minutes * 60);
         int milliseconds = Mathf.FloorToInt((elapsedTime * 1000) % 1000);

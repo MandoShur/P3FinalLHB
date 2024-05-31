@@ -10,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
   
     public int maxHealth = 100;
     private int currentHealth;
-    public TextMeshProUGUI healthText; //text component reference
-    public GameOverManager gameOverManager; // Reference to the GameOverManager
+    public TextMeshProUGUI healthText; 
+    public GameOverManager gameOverManager; 
     public GameManager gameManager;
 
 
@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (gameManager != null)
         {
-            gameManager.GameOver(); // Call GameOver method from GameManager
+            gameManager.GameOver(); // Call GameOver method from the game manager
         }
         else
         {
@@ -66,12 +66,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         UnityEngine.Debug.Log("Player died!");
-        // Add other death logic here (e.g., show game over screen)
+       
     }
 
 
     void UpdateHealthText()
     {
+        //updates health onto the text
         if (healthText != null)
         {
             healthText.text = "Health: " + currentHealth.ToString();
@@ -85,13 +86,5 @@ public class PlayerHealth : MonoBehaviour
     
     
 
-    public void Heal(int amount)
-    {
-        // Increase current health by amount healed
-        currentHealth += amount;
-        // Clamp the current health to be within 0 and maxHealth
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        // Update the health display
-        UpdateHealthText();
-    }
+
 }
